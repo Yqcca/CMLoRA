@@ -62,4 +62,5 @@ This composition pipeline leverages asynchrony in two components: the LoRA switc
 A advanced pipeline for research purposes, this pipeline includes functions to plot the intensity of the high-frequency components and measure the similarity of latent feature maps during the denoising process.
 
 ### Additional Resources
-- We also provide the `fft_analysis.ipynb` notebook for analyzing the amplitude of the frequency spectrum for different images. This tool can help visualize and examine how the frequency components vary across different generated images.
+- We provide the `fft_analysis.ipynb` notebook for analyzing the amplitude of the frequency spectrum for different images. This tool can help visualize and examine how the frequency components vary across different generated images.
+- We implement a revised LoRA Switch method with profiled LoRA partition in `callbacks_sa.py`, while the standard version is available in `callbacks_origin.py`.
