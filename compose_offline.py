@@ -67,10 +67,8 @@ def main(args):
     init_prompt, negative_prompt = get_prompt(args.image_style)
 
     # scores = {}
-
-    time_list = [[] for i in args.interval]
-    score_list = [[] for i in args.interval]
-    rm_score_list = [[] for i in args.interval]
+    # score_list = [[] for i in args.interval]
+    # rm_score_list = [[] for i in args.interval]
 
     # generate images for each combination based on LoRAs
     for combo in tqdm(combinations):
@@ -130,9 +128,9 @@ def main(args):
             # rm_score = rm_model.score(', '.join(triggers), image)
 
             # # clip score
-            image = np.array(image, dtype=np.float32)[np.newaxis, ...] / 255.0
+            # image = np.array(image, dtype=np.float32)[np.newaxis, ...] / 255.0
             # score = calculate_clip_score(image, ', '.join(triggers))
-            # scores[tmp][str(args.interval[inter])] = [score, rm_score, timee]
+            # scores[tmp][str(args.interval[inter])] = [score, rm_score]
 
             # score_list[inter].append(score)
             # rm_score_list[inter].append(rm_score)

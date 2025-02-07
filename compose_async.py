@@ -12,13 +12,12 @@ from LoRA_Cache.pipelines.stable_diffusion.pipeline_async import StableDiffusion
 import numpy as np
 from utils import load_lora_info, generate_combinations
 from utils import get_prompt
-from utils import calculate_clip_score
+# from utils import calculate_clip_score
 from callbacks_sa import make_callback
-import time
-import ImageReward as RM
+# import ImageReward as RM
 
 def main(args):
-    rm_model = RM.load("ImageReward-v1.0")
+    # rm_model = RM.load("ImageReward-v1.0")
     
     # set path based on the image style
     args.save_path = args.save_path + "_" + args.image_style
@@ -69,9 +68,8 @@ def main(args):
 
     # scores = {}
 
-    time_list = [[] for i in args.interval]
-    score_list = [[] for i in args.interval]
-    rm_score_list = [[] for i in args.interval]
+    # score_list = [[] for i in args.interval]
+    # rm_score_list = [[] for i in args.interval]
 
     # generate images for each combination based on LoRAs
     for combo in tqdm(combinations):
@@ -98,7 +96,6 @@ def main(args):
 
         for inter in range(len(args.interval)):
             # generate images
-            start = time.time()
             image = pipeline(
                 prompt=prompt, 
                 negative_prompt=negative_prompt,
@@ -119,10 +116,6 @@ def main(args):
 
             # exit
             # exit()
-            
-            end = time.time()
-            timee = end - start
-            time_list[inter].append(timee)
         
             # save image
             save_path = join(args.save_path, f'{args.compos_num}_elements')
@@ -133,25 +126,24 @@ def main(args):
             file_name = args.method + '_' + '_'.join([lora['id'] for lora in combo]) + '_' + str(args.interval[inter]) + '.png'
             image.save(join(save_path, file_name))
             
-            rm_score = rm_model.score(', '.join(triggers), image)
+            # rm_score = rm_model.score(', '.join(triggers), image)
 
             # # clip score
-            image = np.array(image, dtype=np.float32)[np.newaxis, ...] / 255.0
-            score = calculate_clip_score(image, ', '.join(triggers))
-            # scores[tmp][str(args.interval[inter])] = [score, rm_score, timee]
+            # image = np.array(image, dtype=np.float32)[np.newaxis, ...] / 255.0
+            # score = calculate_clip_score(image, ', '.join(triggers))
+            # scores[tmp][str(args.interval[inter])] = [score, rm_score]
 
-            score_list[inter].append(score)
-            rm_score_list[inter].append(rm_score)
+            # score_list[inter].append(score)
+            # rm_score_list[inter].append(rm_score)
 
     # w_name = args.method+'_'+'results.json'
     # with open(join(save_path, w_name), 'w') as file:
     #     json.dump(scores, file)
 
-    for inter in range(len(args.interval)):
-        print(f'Interval {args.interval[inter]} Min Time:{np.min(time_list[inter])}\nAvg Time:{np.average(time_list[inter])}\nMax Time:{np.max(time_list[inter])}')
-        print(f'Interval {args.interval[inter]} Min Clip Score:{np.min(score_list[inter])}\nAvg Clip Score:{np.average(score_list[inter])}\nMax Clip Score:{np.max(score_list[inter])}')
-        print(f'Interval {args.interval[inter]} Min RM Score:{np.min(rm_score_list[inter])}\nAvg RM Score:{np.average(rm_score_list[inter])}\nMax RM Score:{np.max(rm_score_list[inter])}')
-        print('--------------------')
+    # for inter in range(len(args.interval)):
+    #     print(f'Interval {args.interval[inter]} Min Clip Score:{np.min(score_list[inter])}\nAvg Clip Score:{np.average(score_list[inter])}\nMax Clip Score:{np.max(score_list[inter])}')
+    #     print(f'Interval {args.interval[inter]} Min RM Score:{np.min(rm_score_list[inter])}\nAvg RM Score:{np.average(rm_score_list[inter])}\nMax RM Score:{np.max(rm_score_list[inter])}')
+    #     print('--------------------')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(

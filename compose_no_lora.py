@@ -93,7 +93,7 @@ def main(args):
             # # clip score
             # image = np.array(image, dtype=np.float32)[np.newaxis, ...] / 255.0
             # score = calculate_clip_score(image, ', '.join(triggers))
-            # scores[tmp][str(args.interval[inter])] = [score, rm_score, timee]
+            # scores[tmp][str(args.interval[inter])] = [score, rm_score]
 
             # print('_'.join([lora['id'] for lora in combo]) + '_' + str(args.interval[inter]))
             # print(score)
