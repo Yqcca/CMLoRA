@@ -1,0 +1,7 @@
+diffusers[torch]
+openai
+peft==0.8.2
+transformers
+image-reward
+matplotlib
+torchmetrics
