@@ -1,2 +1,62 @@
-# CMLoRA
-Cached Multi-Lora Composition for Multi-Concept Image Generation
+# cmlora
+<p align="center">
+  <a href="https://github.com/Yqcca/CMLoRA"><img src="https://img.shields.io/badge/🌐-Website-red" height="25"></a>
+<!--   <a href="https://arxiv.org/abs/2308.11978"><img src="https://img.shields.io/badge/📝-Paper-blue" height="25"></a> -->
+</p>
+
+## 📜 Abstract
+Low-Rank Adaptation (LoRA) has emerged as a widely adopted technique in text-to-image models, enabling precise rendering of multiple distinct elements, such as characters and styles, in multi-concept image generation. However, current approaches face significant challenges when composing these LoRAs for multi-concept image generation, particularly as the number of LoRAs increases, resulting in diminished generated image quality.  In this paper, we initially investigate the role of LoRAs in the denoising process through the lens of the Fourier frequency domain. Based on the hypothesis that applying multiple LoRAs could lead to "semantic conflicts", we have conducted empirical experiments and find that certain LoRAs amplify high-frequency features such as edges and textures, whereas others mainly focus on low-frequency elements, including the overall structure and smooth color gradients. Building on these insights, we devise a frequency domain based sequencing strategy to determine the optimal order in which LoRAs should be integrated during inference. This strategy offers a methodical and generalizable solution compared to the naive integration commonly found in existing LoRA fusion techniques. To fully leverage our proposed LoRA order sequence determination method in multi-LoRA composition tasks, we introduce a novel, training-free framework, Cached Multi-LoRA (CMLoRA), designed to efficiently integrate multiple LoRAs while maintaining cohesive image generation. With its flexible backbone for multi-LoRA fusion and a non-uniform caching strategy tailored to individual LoRAs, CMLoRA has the potential to reduce semantic conflicts in LoRA composition and improve computational efficiency. Our experimental evaluations demonstrate that CMLoRA outperforms state-of-the-art training-free LoRA fusion methods by a significant margin -- it achieves an average improvement of $2.19\%$ in CLIPScore, and $11.25\%$ in MLLM win rate compared to LoraHub, LoRA Composite, and LoRA Switch.
+
+The figures below illustrates differences between the traditional LoRA Merge approach and our newly proposed techniques:
+
+<p align="center">
+    <img src="images/sshow1.jpg" width="100%" alt="intro_case">
+</p>
+
+<p align="center">
+    <img src="images/sshow2.jpg" width="100%" alt="intro_case">
+</p>
+
+<p align="center">
+    <img src="images/sshow3.jpg" width="100%" alt="intro_case">
+</p>
+
+## 🚀 Getting Started
+### Setting Up the Environment
+To begin, set up your environment with the necessary packages:
+```bash
+conda create --name cmlora python=3.10
+conda activate cmlora
+pip install -r requirements.txt # Inference
+pip install -r requirements1.txt # Evaluation
+```
+
+### Downloading Pre-trained LoRAs
+**ComposLoRA** testbed proposed by [Multi-LoRA-Composition](https://github.com/maszhongming/Multi-LoRA-Composition) collects 22 pre-trained LoRAs, spanning characters, clothing, styles, backgrounds, and objects. Download `ComposLoRA.zip` from [this link](https://drive.google.com/file/d/1SuwRgV1LtEud8dfjftnw-zxBMgzSCwIT/view?usp=sharing), put it in the [models](./models) folder, and unzip it.
+
+## 🖼️ Image Generation with Multi-LoRA Composition
+Refer to `example.py` for the full code, and adjust the following command to see results from different composition methods with different LoRA caching strategies:
+
+```bash
+python example.py --method composite --interval [0,1,2,3,4,5]
+```
+
+## 🌟 Multi-LoRA Composition Pipelines
+We provide five multi-LoRA composition pipelines: 
+### 1. `compose_no_lora`
+The method that performs diffusion using prompt-only generation without incorporating any LoRAs.
+
+### 2. `compose_offline`
+A multi-LoRA composition method that utilizes an offline LoRA disparity method. This method partitions LoRAs based on the profiled frequency domain based sequencing strategy.
+
+### 3. `compose_online`
+This method uses an online frequency partition strategy. LoRAs are dynamically partitioned based on the amplitude of high frequency components during the generative process.
+
+### 4. `compose_async`
+This composition pipeline leverages asynchrony in two components: the LoRA switch mechanism and the decaying dominant weight scale $w_{\text{dom}}$.
+
+### 5. `compose_research`
+A advanced pipeline for research purposes, this pipeline includes functions to plot the intensity of the high-frequency components and measure the similarity of latent feature maps during the denoising process.
+
+### Additional Resources
+- We also provide the `fft_analysis.ipynb` notebook for analyzing the amplitude of the frequency spectrum for different images. This tool can help visualize and examine how the frequency components vary across different generated images.
