@@ -67,5 +67,16 @@ A advanced pipeline for research purposes, this pipeline includes functions to p
 - We provide the `fft_analysis.ipynb` notebook for analyzing the amplitude of the frequency spectrum for different images. This tool can help visualize and examine how the frequency components vary across different generated images.
 - We implement a revised LoRA Switch method with profiled LoRA partition in `callbacks_sa.py`, while the standard version is available in `callbacks_origin.py`.
 
+## Citation
+If you find this work useful, please kindly cite our paper:
+```bibtex
+@article{zou2025cached,
+  title={Cached Multi-Lora Composition for Multi-Concept Image Generation},
+  author={Zou, Xiandong and Shen, Mingzhu and Bouganis, Christos-Savvas and Zhao, Yiren},
+  journal={arXiv preprint arXiv:2502.04923},
+  year={2025}
+}
+```
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
