@@ -43,7 +43,7 @@ pip install -r requirements1.txt # Evaluation
 Refer to `example.py` for the full code, and adjust the following command to see results from different composition methods with different LoRA caching strategies:
 
 ```bash
-python example.py --method composite --interval [0,1,2,3,4,5]
+python example.py --method composite
 ```
 
 ## 🌟 Multi-LoRA Composition Pipelines
