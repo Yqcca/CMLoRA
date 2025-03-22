@@ -164,11 +164,11 @@ if __name__ == "__main__":
                         help='path to store all LoRA models', type=str)
     parser.add_argument('--lora_info_path', default='lora_info.json',
                         help='path to stroe all LoRA information', type=str)
-    parser.add_argument('--lora_scale', default=1.4,
+    parser.add_argument('--lora_scale', default=1,
                         help='scale of each LoRA when generating images', type=float)
     parser.add_argument('--switch_step', default=5,
                         help='number of steps to switch LoRA during denoising, applicable only in the switch method', type=int)
-    parser.add_argument('--interval', default=[1,2,3],
+    parser.add_argument('--interval', default='[1,2,3.5]',
                         help='number of steps to cache LoRA during denoising', type=json.loads)
     parser.add_argument('--dom_lora_coeff', default=1.1, type=float)
     parser.add_argument('--s', default='50_r_2', type=str)
@@ -179,9 +179,9 @@ if __name__ == "__main__":
                         help='height of the generated images', type=int)
     parser.add_argument('--width', default=512,
                         help='width of the generated images', type=int)
-    parser.add_argument('--denoise_steps', default=200,
+    parser.add_argument('--denoise_steps', default=220,
                         help='number of the denoising steps', type=int)
-    parser.add_argument('--cfg_scale', default=10,
+    parser.add_argument('--cfg_scale', default=8.5,
                         help='scale for classifier-free guidance', type=float)
     parser.add_argument('--seed', default=111,
                         help='seed for generating images', type=int)

@@ -112,7 +112,7 @@ if __name__ == "__main__":
     # parser.add_argument('--num', default=24, type=int)
     parser.add_argument('--save_path', default='output_pure',
                         help='path to save the generated image', type=str)
-    parser.add_argument('--interval', default=[1,2,3],
+    parser.add_argument('--interval', default='[1,2,3.5]',
                         help='number of steps to cache LoRA during denoising', type=json.loads)
     parser.add_argument('--compos_num', default=2,
                         help='number of elements to be combined in a single image', type=int)
@@ -125,9 +125,9 @@ if __name__ == "__main__":
                         help='height of the generated images', type=int)
     parser.add_argument('--width', default=512,
                         help='width of the generated images', type=int)
-    parser.add_argument('--denoise_steps', default=200,
+    parser.add_argument('--denoise_steps', default=220,
                         help='number of the denoising steps', type=int)
-    parser.add_argument('--cfg_scale', default=10,
+    parser.add_argument('--cfg_scale', default=8.5,
                         help='scale for classifier-free guidance', type=float)
     parser.add_argument('--seed', default=111,
                         help='seed for generating images', type=int)

@@ -1,0 +1,25 @@
+{"character": [
+        {
+            "id": "character_1",
+            "name": "Kamado Nezuko",
+            "trigger": [
+                "kamado nezuko",
+                "black hair",
+                "pink eyes",
+                "forehead"
+            ],
+            "url": "https://civitai.com/models/20346/nezuko-demon-slayer-kimetsu-no-yaiba-lora?modelVersionId=24191"
+        }],
+"background": [
+        {
+            "id": "background_1",
+            "name": "Bamboolight Background",
+            "trigger": [
+                "bamboolight",
+                "outdoors",
+                "bamboo"
+            ],
+            "url": "https://civitai.com/models/113381/lora-bamboolight-concept-with-dropout-and-noise-version?modelVersionId=122477"
+        }
+    ]
+}
