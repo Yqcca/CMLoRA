@@ -67,6 +67,9 @@ A advanced pipeline for research purposes, this pipeline includes functions to p
 - We provide the `fft_analysis.ipynb` notebook for analyzing the amplitude of the frequency spectrum for different images. This tool can help visualize and examine how the frequency components vary across different generated images.
 - We implement a revised LoRA Switch method with profiled LoRA partition in `callbacks_sa.py`, while the standard version is available in `callbacks_origin.py`.
 
+## Acknowledgments
+* This code is built on the [Diffusers](https://github.com/huggingface/diffusers) and [Multi-LoRA Composition]([https://github.com/bytedance/MVDream-threestudio/tree/main](https://github.com/maszhongming/Multi-LoRA-Composition)). The authors would like to thank the open-source community for sharing the models, codebases, and training datasets. 
+
 ## Citation
 If you find this work useful, please kindly cite our paper:
 ```bibtex
