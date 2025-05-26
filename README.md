@@ -1,7 +1,7 @@
 # Cached Multi-Lora Composition for Multi-Concept Image Generation
 <p align="center">
   <a href="https://github.com/Yqcca/CMLoRA"><img src="https://img.shields.io/badge/🌐-Website-red" height="25"></a>
-  <a href="https://openreview.net/forum?id=4iFSBgxvIO&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2025%2FConference%2FAuthors%23your-submissions)"><img src="https://img.shields.io/badge/📝-Paper-blue" height="25"></a>
+  <a href="https://arxiv.org/abs/2502.04923"><img src="https://img.shields.io/badge/📝-Paper-blue" height="25"></a>
 </p>
 
 ## 📜 Description
