@@ -168,7 +168,7 @@ if __name__ == "__main__":
                         help='scale of each LoRA when generating images', type=float)
     parser.add_argument('--switch_step', default=5,
                         help='number of steps to switch LoRA during denoising, applicable only in the switch method', type=int)
-    parser.add_argument('--interval', default='[1,2,3.5]',
+    parser.add_argument('--interval', default='[0,1,2,3,5]',
                         help='number of steps to cache LoRA during denoising', type=json.loads)
     parser.add_argument('--dom_lora_coeff', default=1.1, type=float)
     parser.add_argument('--s', default='50_r_2', type=str)

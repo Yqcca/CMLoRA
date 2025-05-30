@@ -111,7 +111,7 @@ if __name__ == "__main__":
                         help='number of steps to switch LoRA during denoising, applicable only in the switch method', type=int)
     parser.add_argument('--lora_info_path', default='example_info.json',
                         help='path to stroe all LoRA information', type=str)
-    parser.add_argument('--interval', default='[1,2,3,5]',
+    parser.add_argument('--interval', default='[0,1,2,3,5]',
                         help='number of steps to cache LoRA during denoising', type=json.loads)
 
     # Arguments for generating images

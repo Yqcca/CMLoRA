@@ -112,7 +112,7 @@ if __name__ == "__main__":
     # parser.add_argument('--num', default=24, type=int)
     parser.add_argument('--save_path', default='output_pure',
                         help='path to save the generated image', type=str)
-    parser.add_argument('--interval', default='[1,2,3.5]',
+    parser.add_argument('--interval', default='[1,2,3,5]',
                         help='number of steps to cache LoRA during denoising', type=json.loads)
     parser.add_argument('--compos_num', default=2,
                         help='number of elements to be combined in a single image', type=int)

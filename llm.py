@@ -92,8 +92,8 @@ def main(args):
                     Kindly provide the ratings in the following format: Model A: Integration: [score]/10, Consistency: [score]/10, Accuracy: [score]/10, Visual Appeal: [score]/10; \
                     Model B: Integration: [score]/10, Consistency: [score]/10, Accuracy: [score]/10, Visual Appeal: [score]/10. \
                     Your evaluation should be detailed, with scores that avoid ties between the models on both aspects.'
-                    answer = f'Image 1: Integration: {image_1_integration[combo]}/10, Consistency: {image_1_consistency[combo]}/10, Accuracy: {image_1_accuracy[combo]}/10, Visual Appeal: {image_1_appeal[combo]}/10.\n'\
-                     f'Image 2: Integration: {image_2_integration[combo]}/10, Consistency: {image_2_consistency[combo]}/10, Accuracy: {image_2_accuracy[combo]}/10, Visual Appeal: {image_2_appeal[combo]}/10.'
+                    answer = f'Image 1: Integration: {image_1_integration[combo-1]}/10, Consistency: {image_1_consistency[combo-1]}/10, Accuracy: {image_1_accuracy[combo-1]}/10, Visual Appeal: {image_1_appeal[combo-1]}/10.\n'\
+                     f'Image 2: Integration: {image_2_integration[combo-1]}/10, Consistency: {image_2_consistency[combo-1]}/10, Accuracy: {image_2_accuracy[combo-1]}/10, Visual Appeal: {image_2_appeal[combo-1]}/10.'
 
                     triggers1 = [trigger for lora in combinations[combo] for trigger in lora['trigger']]
                     prompt1 = init_prompt + ', ' + ', '.join(triggers1)
