@@ -38,6 +38,7 @@ def main(args):
                 image2 = os.path.join(args.path2, file_name2)
                 
                 ranking, rewards = rm_model.inference_rank(prompt, [image1, image2])
+                rewards = [round(r, 2) for r in rewards]
 
                 if rewards[0] > rewards[1]:
                     win += 1
