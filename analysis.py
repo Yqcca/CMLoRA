@@ -37,13 +37,15 @@ def main(args):
                 image1 = os.path.join(args.path1, file_name1)
                 image2 = os.path.join(args.path2, file_name2)
                 
+                tolerance = 0.1
+                
                 ranking, rewards = rm_model.inference_rank(prompt, [image1, image2])
-                rewards = [round(r, 2) for r in rewards]
-
-                if rewards[0] > rewards[1]:
-                    win += 1
-                elif rewards[0] == rewards[1]:
+                rewards = [round(r, 1) for r in rewards]
+                
+                if abs(rewards[0] - rewards[1]) <= tolerance:
                     tie += 1
+                elif rewards[0] > rewards[1]:
+                    win += 1
                 else:
                     lose += 1
             print(f'Win:{win}, Tie:{tie}, Lose:{lose}\n')
